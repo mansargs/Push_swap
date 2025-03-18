@@ -1,112 +1,86 @@
 #include "push_swap.h"
 
-static int	count_word(char *str, char c)
+static size_t	count_words(char const *s, char c)
 {
-	int	count;
-	int	inside;
+	int		inside_word;
+	size_t	len;
 
-	count = 0;
-	while (str && *str)
+	len = 0;
+	while (*s)
 	{
-		while (*str == c)
-			++str;
-		inside = 0;
-		while (*str && *str != c)
+		inside_word = 0;
+		while (*s && *s == c)
+			++s;
+		while (*s && *s != c)
 		{
-			if (!inside)
+			if (!inside_word)
 			{
-				inside = 1;
-				++count;
+				++len;
+				inside_word = 1;
 			}
-			++str;
+			++s;
 		}
 	}
-	return (count);
+	return (len);
 }
 
-static void	clear(char **result, int i)
+static int	safe_malloc(char **split, int idx, size_t size)
 {
-	int	j;
-
-	j = 0;
-	while (j < i)
-		free(result[i]);
-	free(result);
-}
-
-void	ft_strncpy(char *dest, char *src, int len)
-{
-	int i;
-
-	i = 0;
-	while (src[i] && i < len)
-	{
-		dest[i] = src[i];
-		++i;
-	}
-	dest[i] = '\0';
-}
-
-static int	fill(char **result, char *str, char c)
-{
-	int	len;
 	int	i;
 
 	i = 0;
-	while (str && *str)
+	split[idx] = (char *)malloc(size * sizeof(char));
+	if (split[idx] == NULL)
 	{
-		while (*str == c)
-			++str;
-		len = 0;
-		while (*str && *str != c)
+		while (i < idx)
 		{
-			++str;
-			++len;
+			free(split[i]);
+			++i;
 		}
-		result[i] = (char *)malloc(sizeof(char) * (len + 1));
-		if (!result[i])
-			return (clear(result, i), 0);
-		ft_strncpy(result[i], str - len, len);
+		free(split);
+		return (0);
+	}
+	return (1);
+}
+
+static int	fill(char **split, char const *s, char c)
+{
+	size_t	len;
+	int		i;
+
+	i = 0;
+	while (*s)
+	{
+		len = 0;
+		while (*s && *s == c)
+			++s;
+		while (*s && *s != c)
+		{
+			++len;
+			++s;
+		}
+		if (len)
+		{
+			if (!safe_malloc(split, i, len + 1))
+				return (0);
+			ft_strlcpy(split[i], s - len, len + 1);
+		}
 		++i;
 	}
 	return (1);
 }
 
-char	**ft_split(char *str, char c)
+char	**ft_split(char const *s, char c)
 {
-	int		count;
-	char	**result;
+	size_t	len;
+	char	**split;
 
-	if (!str)
+	len = count_words(s, c);
+	split = (char **)malloc((len + 1) * sizeof(char *));
+	if (split == NULL)
 		return (NULL);
-	count = count_word(str, c);
-	result = (char **)malloc(sizeof(char *) * (count + 1));
-	if (!result)
+	split[len] = NULL;
+	if (!fill(split, s, c))
 		return (NULL);
-	result[count] = NULL;
-	if (count)
-		if (!fill(result, str, c))
-			return (NULL);
-	return (result);
+	return (split);
 }
-
-/*
-#include <stdio.h>
-
-int main(int argc, char *argv[])
-{
-	printf("%d\n", argc);
-	(void) argv;
-	char **res;
-
-	res = ft_split(argv[1], ' ');
-	int n = count_word(argv[1], ' ');
-	for (int i = 0; i < n; ++i)
-	{
-		printf("%s\n", res[i]);
-		free (res[i]);
-	}
-	free(res);
-	return (0);
-}
-	*/

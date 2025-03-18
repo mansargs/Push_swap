@@ -1,18 +1,32 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdlib.h>
-#include <limits.h>
-#include <stdio.h>
+typedef struct s_list
+{
+	void			*data;
+	struct s_list	*next;
+	int				index;
+}					t_list;
 
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+// Work with strings
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *str);
-void	ft_strncpy(char *dest, char *src, int len);
-char	**ft_split(char *str, char c);
-void	*strclear(char **str);
-long	ft_atoi(char *str);
-int		check_string(char *str);
+char	**ft_split(char const *s, char c);
+char	*ft_itoa(int n);
+int		ft_atoi(const char *str);
+void	strclear(char ***str);
 
-int parse(int argc, char *argv[]);
 
+t_list		*check_and_add(int argc, char *argv[], t_list *Stack_A);
+
+
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstnew(void *content);
+void	ft_lstclear(t_list **lst);
 
 #endif
