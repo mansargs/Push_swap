@@ -9,15 +9,24 @@ int	check(char	*str)
 
 	num = ft_atoi(str);
 	itoa = ft_itoa(num);
+	printf("%d\n", num);
 	i = 0;
 	j = 0;
-	while (str[i] == '+' || str[i] == '0')
+	if (str[i] == '+')
 		++i;
-	if (num < 0)
+	while (str[i] == '0')
+		++i;
+	if (str[i] == '\0')
+		--i;
+	if (str[i] == '-')
 	{
-		while (str[i] == '-' || str[i] == '0')
+		++i;
+		if (itoa[j] == '-')
+			++j;
+		while (str[i] == '0')
 			++i;
-		str[--i] = '-';
+		if (str[i] == '\0')
+			--i;
 	}
 	while (str[i] && itoa[j])
 	{
@@ -43,7 +52,6 @@ int add(char *str, t_list **Stack_A)
 	if (!ptr)
 		return (0);
 	*ptr = num;
-	// Create a new node for the number
 	new_node = ft_lstnew(ptr);
 	if (!new_node)
 	{
