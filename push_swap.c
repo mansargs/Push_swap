@@ -13,10 +13,15 @@ int main (int argc, char *argv[])
 	n = ft_lstsize(Stack_A);
 	arr = (int *)malloc(sizeof(int) * n);
 	if (!arr)
-		return (1);
+		return (ft_lstclear(&Stack_A), write (2, "Error\n", 6), 1);
 	if (!copy_to_array(n, arr, Stack_A))
-		return (write (2, "Error\n", 6), 1);
-	for (int i = 0; i < n; ++i)
-		printf("%d\t", arr[i]);
+		return (ft_lstclear(&Stack_A), write (2, "Error\n", 6), 1);
+	put_indexes(Stack_A, arr, n);
+
+	while (Stack_A)
+	{
+		printf("\ndata --> %d\taddres ----->%p\tindex --->%d", *((int *)Stack_A->data), Stack_A->next, Stack_A->index);
+		Stack_A = Stack_A->next;
+	}
 	return (0);
 }

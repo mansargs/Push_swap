@@ -11,8 +11,14 @@ int	check(char	*str)
 	itoa = ft_itoa(num);
 	i = 0;
 	j = 0;
-	if (str[0] == '+')
+	while (str[i] == '+' || str[i] == '0')
 		++i;
+	if (num < 0)
+	{
+		while (str[i] == '-' || str[i] == '0')
+			++i;
+		str[--i] = '-';
+	}
 	while (str[i] && itoa[j])
 	{
 		if (str[i] != itoa[j])
@@ -32,13 +38,11 @@ int add(char *str, t_list **Stack_A)
 	int *ptr;
 	t_list *new_node;
 
-	// Convert string to integer
 	num = ft_atoi(str);
 	ptr = (int *)malloc(sizeof(int));
 	if (!ptr)
 		return (0);
 	*ptr = num;
-
 	// Create a new node for the number
 	new_node = ft_lstnew(ptr);
 	if (!new_node)
@@ -46,13 +50,10 @@ int add(char *str, t_list **Stack_A)
 		free(ptr);
 		return (0);
 	}
-
-	// If Stack_A is not NULL, link it to the new node
 	if (*Stack_A != NULL)
 	{
 		new_node->next = *Stack_A;
 	}
-	// Set Stack_A to the new node (head of the list)
 	*Stack_A = new_node;
 
 	return (1);
