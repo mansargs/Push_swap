@@ -29,4 +29,6 @@ int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(void *content);
 void	ft_lstclear(t_list **lst);
 
+int	copy_to_array(int n, int *arr, t_list *list);
+
 #endif
