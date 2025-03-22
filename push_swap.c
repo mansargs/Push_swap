@@ -3,10 +3,12 @@
 int main (int argc, char *argv[])
 {
 	t_list	*Stack_A;
+	//t_list	*Stack_B;
 	int		*arr;
 	int		n;
 
 	Stack_A = NULL;
+	//Stack_B = NULL;
 	Stack_A =  check_and_add(argc, argv, Stack_A);
 	if (!Stack_A)
 		return (write (2, "Error\n", 6), 1);
