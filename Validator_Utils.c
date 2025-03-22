@@ -6,7 +6,7 @@
 /*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:13:02 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 18:48:10 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/22 19:49:13 by lenovo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ int	compare(char *itoa, char *str)
 		++j;
 	}
 	return (str[i] == '\0' && itoa[j] == '\0');
+}
+
+int	no_digit(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] >= '0' && str[i] <= '9')
+			return (0);
+	return (1);
 }
 
 int	check(char *str)
@@ -90,7 +101,7 @@ int	check_and_add(int argc, char *argv[], t_list **stack_a)
 	i = 0;
 	while (++i < argc)
 	{
-		if (argv[i][0] == '\0')
+		if (argv[i][0] == '\0' || no_digit(argv[i]))
 			return (ft_lstclear(stack_a), 0);
 		split = ft_split(argv[i], ' ');
 		if (!split)
