@@ -6,7 +6,7 @@
 /*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:18:18 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 17:18:42 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/22 17:24:06 by lenovo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	copy_to_array(t_list *stack_a)
 	fill(arr, stack_a);
 	if (!check_unique(arr, n))
 		return (free(arr), 0);
-	quickSort(arr, 0, n - 1);
+	quicksort(arr, 0, n - 1);
 	put_indexes(stack_a, arr, n);
 	return (free(arr), 1);
 }

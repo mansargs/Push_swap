@@ -6,13 +6,13 @@
 /*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:13:02 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 17:13:34 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/22 18:48:10 by lenovo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	compare(char	*itoa, char	*str)
+int	compare(char *itoa, char *str)
 {
 	int	i;
 	int	j;
@@ -21,14 +21,14 @@ int	compare(char	*itoa, char	*str)
 	j = 0;
 	if (str[i] == '-')
 	{
-		++i;
 		if (itoa[j] == '-')
 			++j;
-		while (str[i] == '0')
-			++i;
-		if (str[i] == '\0')
-			--i;
+		++i;
 	}
+	while (str[i] == '0')
+		++i;
+	while (itoa[j] == '0')
+		j++;
 	while (str[i] && itoa[j])
 	{
 		if (str[i] != itoa[j])
@@ -36,10 +36,10 @@ int	compare(char	*itoa, char	*str)
 		++i;
 		++j;
 	}
-	return (1);
+	return (str[i] == '\0' && itoa[j] == '\0');
 }
 
-int	check(char	*str)
+int	check(char *str)
 {
 	int		i;
 	int		num;
@@ -49,15 +49,14 @@ int	check(char	*str)
 	num = ft_atoi(str);
 	itoa = ft_itoa(num);
 	if (str[i] == '+')
-		++i;
+		i++;
 	while (str[i] == '0')
-		++i;
+		i++;
 	if (str[i] == '\0')
 		--i;
 	if (!compare(itoa, str + i))
 		return (free(itoa), 0);
-	else
-		return (free(itoa), 1);
+	return (free(itoa), 1);
 }
 
 int	add(char *str, t_list **stack_a)
@@ -73,10 +72,7 @@ int	add(char *str, t_list **stack_a)
 	*ptr = num;
 	new_node = ft_lstnew(ptr);
 	if (!new_node)
-	{
-		free(ptr);
 		return (0);
-	}
 	if (*stack_a != NULL)
 	{
 		new_node->next = *stack_a;
@@ -85,7 +81,7 @@ int	add(char *str, t_list **stack_a)
 	return (1);
 }
 
-t_list	*check_and_add(int argc, char *argv[], t_list *stack_a)
+int	check_and_add(int argc, char *argv[], t_list **stack_a)
 {
 	char	**split;
 	int		i;
@@ -95,19 +91,19 @@ t_list	*check_and_add(int argc, char *argv[], t_list *stack_a)
 	while (++i < argc)
 	{
 		if (argv[i][0] == '\0')
-			return (strclear(&split), NULL);
+			return (ft_lstclear(stack_a), 0);
 		split = ft_split(argv[i], ' ');
 		if (!split)
-			return (strclear(&split), NULL);
+			return (ft_lstclear(stack_a), 0);
 		j = -1;
 		while (split[++j])
 		{
 			if (!check(split[j]))
-				return (strclear(&split), NULL);
-			if (!add(split[j], &stack_a))
-				return (strclear(&split), NULL);
+				return (ft_lstclear(stack_a), strclear(&split), 0);
+			if (!add(split[j], stack_a))
+				return (ft_lstclear(stack_a), strclear(&split), 0);
 		}
 		strclear(&split);
 	}
-	return (stack_a);
+	return (1);
 }

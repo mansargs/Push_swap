@@ -6,7 +6,7 @@
 /*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:17:14 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 17:17:52 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/22 17:24:06 by lenovo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	quicksort(int	*arr, int low, int high)
 	if (low >= high)
 		return ;
 	pivot = partition(arr, low, high);
-	quickSort(arr, low, pivot - 1);
-	quickSort(arr, pivot + 1, high);
+	quicksort(arr, low, pivot - 1);
+	quicksort(arr, pivot + 1, high);
 }

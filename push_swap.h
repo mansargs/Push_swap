@@ -6,7 +6,7 @@
 /*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:15:24 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 17:18:01 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/22 18:08:23 by lenovo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
 void	strclear(char ***str);
 
-t_list	*check_and_add(int argc, char *argv[], t_list *stack_a);
+int		check_and_add(int argc, char *argv[], t_list **stack_a);
 
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(void *content);
