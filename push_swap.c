@@ -6,7 +6,7 @@
 /*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:09:52 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 20:06:57 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/22 21:05:52 by lenovo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@ int	main(int argc, char *argv[])
 	if (!copy_to_array(stack_a))
 		return (ft_lstclear(&stack_a), write (2, "Error\n", 6), 1);
 
+	if (is_sorted(stack_a))
+		printf("\nIs sorted\n");
+	else
+		printf("\nyou need to sort\n");
 	while (stack_a)
 	{
-		printf("data --->%d\taddress ---->%p\n", *(int *)stack_a->data, stack_a->next);
+		printf("data --->%d\taddress ---->%p\tindex ---->%d\n", *(int *)stack_a->data, stack_a->next, stack_a->index);
 		stack_a = stack_a->next;
 	}
 	return (0);

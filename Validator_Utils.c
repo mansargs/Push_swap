@@ -6,7 +6,7 @@
 /*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:13:02 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 19:49:13 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/22 21:24:54 by lenovo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	check(char *str)
 	num = ft_atoi(str);
 	itoa = ft_itoa(num);
 	if (str[i] == '+')
-		i++;
+		++i;
 	while (str[i] == '0')
-		i++;
+		++i;
 	if (str[i] == '\0')
 		--i;
 	if (!compare(itoa, str + i))
@@ -84,11 +84,7 @@ int	add(char *str, t_list **stack_a)
 	new_node = ft_lstnew(ptr);
 	if (!new_node)
 		return (0);
-	if (*stack_a != NULL)
-	{
-		new_node->next = *stack_a;
-	}
-	*stack_a = new_node;
+	ft_lstadd_back(stack_a, new_node);
 	return (1);
 }
 
