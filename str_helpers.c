@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   str_helpers.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/22 17:07:24 by lenovo            #+#    #+#             */
+/*   Updated: 2025/03/22 17:07:25 by lenovo           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 size_t	ft_strlen(const char *str)
@@ -86,46 +98,3 @@ char	*ft_itoa(int num)
 	}
 	return (str);
 }
-
-int	ft_atoi(const char *str)
-{
-	size_t	i;
-	int		num;
-	int		sign;
-
-	sign = 1;
-	i = 0;
-	num = 0;
-	while ((str[i] && str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-')
-	{
-		sign = -1;
-		++i;
-	}
-	else if (str[i] == '+')
-		++i;
-	while (str[i] >= '0' && str[i] <= '9')
-		num = 10 * num + (str[i++] - 48);
-	return (sign * num);
-}
-
-void	strclear(char ***str)
-{
-	int	i;
-
-	if (!str || !*str)
-		return;
-
-	i = 0;
-	while ((*str)[i])
-	{
-		free((*str)[i]);
-		(*str)[i] = NULL;
-		i++;
-	}
-
-	free(*str);
-	*str = NULL;
-}
-

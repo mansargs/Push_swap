@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   Validator_Utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:13:02 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 16:14:27 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/22 17:13:34 by lenovo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	check(char	*str)
 		return (free(itoa), 1);
 }
 
-int	add(char *str, t_list **Stack_A)
+int	add(char *str, t_list **stack_a)
 {
 	int		num;
 	int		*ptr;
@@ -77,15 +77,15 @@ int	add(char *str, t_list **Stack_A)
 		free(ptr);
 		return (0);
 	}
-	if (*Stack_A != NULL)
+	if (*stack_a != NULL)
 	{
-		new_node->next = *Stack_A;
+		new_node->next = *stack_a;
 	}
-	*Stack_A = new_node;
+	*stack_a = new_node;
 	return (1);
 }
 
-t_list	*check_and_add(int argc, char *argv[], t_list *Stack_A)
+t_list	*check_and_add(int argc, char *argv[], t_list *stack_a)
 {
 	char	**split;
 	int		i;
@@ -104,10 +104,10 @@ t_list	*check_and_add(int argc, char *argv[], t_list *Stack_A)
 		{
 			if (!check(split[j]))
 				return (strclear(&split), NULL);
-			if (!add(split[j], &Stack_A))
+			if (!add(split[j], &stack_a))
 				return (strclear(&split), NULL);
 		}
 		strclear(&split);
 	}
-	return (Stack_A);
+	return (stack_a);
 }
