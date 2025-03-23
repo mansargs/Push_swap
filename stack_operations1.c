@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 13:27:20 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/23 18:28:43 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/23 20:00:29 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,6 @@ void	ss(t_list **stack_a, t_list **stack_b)
 	sa_sb(stack_a);
 	sa_sb(stack_b);
 }
-/*
-void	pa_pb(t_list **push, t_list **pop)
-{
-	t_list	*push_last;
-	t_list	*pop_last;
-
-	if (!pop || !*pop)
-		return ;
-
-	push_last = *push;
-	pop_last = *pop;
-	while (push_last->next && push_last->next)
-		push_last = push_last->next;
-	while (pop_last && pop_last->next->next)
-		pop_last = pop_last->next;
-	if (!push_last)
-		push_last = pop_last->next;
-	else
-		push_last->next = pop_last->next;
-	pop_last = NULL;
-}*/
 
 void	pa_pb(t_list **push, t_list **pop)
 {
@@ -81,3 +60,30 @@ void	pa_pb(t_list **push, t_list **pop)
 	else
 		pop_prelast->next = NULL;
 }
+
+void	ra_rb(t_list **stack)
+{
+	t_list	*temp;
+	t_list	*first_to_last;
+
+	if (!stack || !*stack)
+		return ;
+	temp = *stack;
+	first_to_last = *stack;
+	if (!temp->next)
+		return ;
+	temp = temp->next;
+	*stack = NULL;
+	*stack = temp;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = first_to_last;
+	temp->next->next = NULL;
+}
+
+void	rr(t_list **stack_a, t_list **stack_b)
+{
+	ra_rb(stack_a);
+	ra_rb(stack_b);
+}
+

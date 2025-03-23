@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:15:24 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/23 15:20:57 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/23 20:26:44 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,9 @@ void	print_stack(t_list *start);
 void	sa_sb(t_list **stack);
 void	ss(t_list **stack_a, t_list **stack_b);
 void	pa_pb(t_list **stack1, t_list **stack2);
+void	ra_rb(t_list **stack);
+void	rr(t_list **stack_a, t_list **stack_b);
+void	rra_rrb(t_list **stack);
+void	rrr(t_list	**stack_a, t_list	**stack_b);
 
 #endif
