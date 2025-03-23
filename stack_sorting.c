@@ -6,7 +6,7 @@
 /*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 20:34:00 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 21:11:30 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/23 14:59:19 by lenovo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,3 +22,13 @@ int is_sorted(t_list *stack)
 	}
 	return (1);
 }
+
+void	print_stack(t_list *start)
+{
+	while (start)
+	{
+		printf("data --->%d\taddress ---->%p\tindex ---->%d\n", *(int *)start->data, start->next, start->index);
+		start = start->next;
+	}
+}
+

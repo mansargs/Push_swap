@@ -6,7 +6,7 @@
 /*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:15:24 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 21:27:06 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/23 14:46:43 by lenovo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,8 @@ int		copy_to_array(t_list *list);
 void	quicksort(int	*arr, int low, int high);
 
 int		is_sorted(t_list *stack_a);
+
+void	print_stack(t_list *start);
+void	sa_sb(t_list **stack);
 
 #endif
