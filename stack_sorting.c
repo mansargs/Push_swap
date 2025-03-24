@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_sorting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 20:34:00 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/23 15:57:17 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/24 17:59:52 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int is_sorted(t_list *stack)
 {
 	while (stack && stack->next)
 	{
-		if (stack->index > stack->next->index)
+		if (stack->index < stack->next->index)
 			return (0);
 		stack = stack->next;
 	}
@@ -37,3 +37,50 @@ void	print_stack(t_list *start)
 	}
 }
 
+void	print_result(int t)
+{
+	if (t)
+		write (1, "OK\n", 3);
+	else
+		write (1, "KO\n", 3);
+}
+
+void	sort_three_number(t_list **stack)
+{
+	t_list	*list;
+
+	list = *stack;
+	if (list->index == 2)
+		sa_sb(stack);
+	else if (list->index == 1 && list->next->data == 2)
+	{
+		ra_rb(stack);
+		sa_sb(stack);
+	}
+	else if (list->index == 1)
+		rra_rrb(stack);
+	else if (list->next->index == 2)
+	{
+		rra_rrb(stack);
+		rra_rrb(stack);
+	}
+	else
+	{
+		rra_rrb(stack);
+		sa_sb(stack);
+	}
+}
+
+void	sort_stack(t_list **stack_a, t_list **stack_b)
+{
+	int	n;
+
+	n = ft_lstsize(*stack_a);
+	if (n == 2)
+	{
+		sa_sb(stack_a),
+		write(1, "sa\n", 3);
+	}
+	else if (n == 3)
+		sort_three_number(stack_a);
+}

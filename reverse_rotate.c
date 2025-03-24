@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_operations2.c                                :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 20:01:44 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/23 20:24:50 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:18:36 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra_rrb(t_list **stack)
+static void	reverse_rotate(t_list **stack)
 {
 	t_list	*temp;
 	t_list	*pre_last;
@@ -30,8 +30,21 @@ void	rra_rrb(t_list **stack)
 	temp->next = NULL;
 }
 
+void	rra(t_list **stack)
+{
+	write (1, "rra\n", 4);
+	reverse_rotate(stack);
+}
+
+void	rrb(t_list **stack)
+{
+	write (1, "rra\n", 4);
+	reverse_rotate(stack);
+}
+
 void	rrr(t_list	**stack_a, t_list	**stack_b)
 {
-	rra_rrb(stack_a);
-	rra_rrb(stack_b);
+	write (1, "rrr\n", 4);
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 }

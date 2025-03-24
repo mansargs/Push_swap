@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_operations.c                                 :+:      :+:    :+:   */
+/*   push_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/23 13:27:20 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/23 20:00:29 by mansargs         ###   ########.fr       */
+/*   Created: 2025/03/24 18:09:32 by mansargs          #+#    #+#             */
+/*   Updated: 2025/03/24 18:13:27 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa_sb(t_list **stack)
-{
-	t_list	*temp;
-	t_list	*pre_end;
-
-	pre_end = *stack;
-	while (pre_end && pre_end->next->next)
-		pre_end = pre_end->next;
-	temp = pre_end;
-	pre_end = pre_end->next;
-	pre_end->next = temp;
-	pre_end->next->next = NULL;
-}
-
-void	ss(t_list **stack_a, t_list **stack_b)
-{
-	sa_sb(stack_a);
-	sa_sb(stack_b);
-}
-
-void	pa_pb(t_list **push, t_list **pop)
+static void	push_pop(t_list **push, t_list **pop)
 {
 	t_list	*push_last;
 	t_list	*pop_prelast;
@@ -61,29 +41,14 @@ void	pa_pb(t_list **push, t_list **pop)
 		pop_prelast->next = NULL;
 }
 
-void	ra_rb(t_list **stack)
+void	pa(t_list **push, t_list **pop)
 {
-	t_list	*temp;
-	t_list	*first_to_last;
-
-	if (!stack || !*stack)
-		return ;
-	temp = *stack;
-	first_to_last = *stack;
-	if (!temp->next)
-		return ;
-	temp = temp->next;
-	*stack = NULL;
-	*stack = temp;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = first_to_last;
-	temp->next->next = NULL;
+	write (1, "pa\n", 3);
+	push_pop(push, pop);
 }
 
-void	rr(t_list **stack_a, t_list **stack_b)
+void	pb(t_list **push, t_list **pop)
 {
-	ra_rb(stack_a);
-	ra_rb(stack_b);
+	write (1, "pb\n", 3);
+	push_pop(push, pop);
 }
-

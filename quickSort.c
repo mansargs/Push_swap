@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quickSort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:17:14 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 21:10:25 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/24 17:20:23 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	partition(int	*arr, int low, int high)
 	j = low - 1;
 	while (++j < high)
 	{
-		if (arr[j] > pivot)
+		if (arr[j] < pivot)
 		{
 			++i;
 			swap(arr + i, arr + j);
