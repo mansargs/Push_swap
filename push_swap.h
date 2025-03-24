@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:15:24 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/23 20:26:44 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/24 20:25:47 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,28 @@ void	quicksort(int	*arr, int low, int high);
 int		is_sorted(t_list *stack_a);
 
 void	print_stack(t_list *start);
-void	sa_sb(t_list **stack);
+void	print_result(int t);
+void	sort_stack(t_list **stack_a, t_list **stack_b);
+
+void	min_in_top(t_list **stack, int min);
+
+// Stack operations
+
+void	sa(t_list **stack);
+void	sb(t_list **stack);
 void	ss(t_list **stack_a, t_list **stack_b);
-void	pa_pb(t_list **stack1, t_list **stack2);
-void	ra_rb(t_list **stack);
+void	pa(t_list **stack1, t_list **stack2);
+void	pb(t_list **stack1, t_list **stack2);
+void	ra(t_list **stack);
+void	rb(t_list **stack);
 void	rr(t_list **stack_a, t_list **stack_b);
-void	rra_rrb(t_list **stack);
+void	rra(t_list **stack);
+void	rrb(t_list **stack);
 void	rrr(t_list	**stack_a, t_list	**stack_b);
+
+// sorting
+
+void	sort_three_number(t_list **stack);
+
 
 #endif
