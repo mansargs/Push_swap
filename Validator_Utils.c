@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Validator_Utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 16:13:02 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 21:24:54 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/25 20:17:41 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	add(char *str, t_list **stack_a)
 	new_node = ft_lstnew(ptr);
 	if (!new_node)
 		return (0);
-	ft_lstadd_back(stack_a, new_node);
+	ft_lstadd_front(stack_a, new_node);
 	return (1);
 }
 

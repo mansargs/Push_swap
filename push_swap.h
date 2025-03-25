@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:15:24 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/25 16:24:33 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/25 20:18:26 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		check_and_add(int argc, char *argv[], t_list **stack_a);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(void *content);
 void	ft_lstclear(t_list **lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 
 int		copy_to_array(t_list *list);
@@ -71,6 +71,7 @@ void	rrr(t_list	**stack_a, t_list	**stack_b);
 
 void	sort_three_number(t_list **stack);
 void	four_and_five(t_list **stack_a, t_list **stack_b);
+void	butterfly(t_list **stack_a, t_list **stack_b);
 
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_management.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lenovo <lenovo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:08:47 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/22 21:26:37 by lenovo           ###   ########.fr       */
+/*   Updated: 2025/03/25 20:17:27 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,13 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!new)
-		return ;
-	if (*lst == NULL)
+	if (new)
 	{
+		new->next = *lst;
 		*lst = new;
-		return ;
 	}
-	(ft_lstlast(*lst))->next = new;
 }
 
 void	ft_lstclear(t_list **lst)
