@@ -6,23 +6,33 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:48:11 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/25 19:43:06 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/26 03:33:38 by mansargs         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   butterfly.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/25 17:48:11 by mansargs          #+#    #+#             */
+/*   Updated: 2025/03/26 02:40:31 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <math.h>
 
-void	max_in_top(t_list **stack, int max)
+void max_in_top(t_list **stack, int max)
 {
-	int		i;
-	t_list	*max_index;
-	int		size;
+	int i;
+	int length;
+	t_list *max_index;
 
 	i = 0;
+	length = ft_lstsize(*stack);
 	max_index = *stack;
-	size = ft_lstsize(*stack);
-
 	while (max_index)
 	{
 		if (max_index->index == max)
@@ -30,24 +40,13 @@ void	max_in_top(t_list **stack, int max)
 		++i;
 		max_index = max_index->next;
 	}
-
-	// Debug print
-	printf("Moving max index %d to top. Current position: %d, Stack size: %d\n", max, i, size);
-
-	if (i <= size / 2)
-	{
-		while (i--) // Rotate `i` times
+	if (i <= length / 2)
+		while (i--)
 			ra(stack);
-	}
 	else
-	{
-		int moves = size - i; // Correct number of reverse rotates
-		while (moves--)
+		while (length-- > i)
 			rra(stack);
-	}
 }
-
-
 
 void	butterfly(t_list **stack_a, t_list **stack_b)
 {
@@ -56,26 +55,21 @@ void	butterfly(t_list **stack_a, t_list **stack_b)
 	t_list	*last;
 	int		n;
 	int		counter;
+	int     max;
 
 	size = ft_lstsize(*stack_a);
 	len = size;
-	n = sqrt(len) - log2(len) + 1;
+	n = sqrt(len) + log2(len) - 1;
 	counter = 0;
-	while (size != 3)
+	while (size > 3)
 	{
-		// printf("\nStack A\n");
-		// print_stack(*stack_a);
-		// printf("\nStack B\n");
-		// print_stack(*stack_b);
 		if (!*stack_a)
 			return ;
 		last = *stack_a;
-		while (last->next)
-			last = last->next;
 		if (last->index <= counter)
 		{
 			pb(stack_b, stack_a);
-			rrb(stack_b);
+			rb(stack_b);
 			++counter;
 			--size;
 		}
@@ -86,12 +80,15 @@ void	butterfly(t_list **stack_a, t_list **stack_b)
 			--size;
 		}
 		else
-			rra(stack_a);
+			ra(stack_a);
 	}
 	sort_three_number(stack_a);
-	while (++size <= len)
+	max = len - 4;
+	while (ft_lstsize(*stack_b) > 0)
 	{
-		max_in_top(stack_b, size -1);
+		max_in_top(stack_b, max);
 		pa(stack_a, stack_b);
+		max--;
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:04:32 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/25 20:38:05 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/26 01:17:53 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ static void	swap_stack(t_list **stack)
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	temp = (*stack)->next->next;
-	swap = (*stack)->next;
-	*stack = *stack
-
+	swap = *stack;
+	*stack = (*stack)->next;
+	(*stack)->next = swap;
+	(*stack)->next->next = temp;
 }
 
 void	sa(t_list **stack)
