@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:09:52 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/24 20:24:59 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:47:34 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ int	main(int argc, char *argv[])
 	if (!copy_to_array(stack_a))
 		return (ft_lstclear(&stack_a), write (2, "Error\n", 6), 1);
 	print_stack(stack_a);
-	min_in_top(stack_a, 0);
-	// if (is_sorted(stack_a))
-	// 	print_result(1);
-	// else
-	// 	sort_stack(&stack_a, &stack_b);
+	if (is_sorted(stack_a))
+		return (ft_lstclear(stack_a), 0);
+	else
+		sort_stack(&stack_a, &stack_b);
 	print_stack(stack_a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 20:34:00 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/24 19:41:54 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:28:54 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 		sa(stack_a);
 	else if (n == 3)
 		sort_three_number(stack_a);
+	else if (n == 4 || n == 5)
+		four_and_five(stack_a, stack_b);
 }
 

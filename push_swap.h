@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:15:24 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/24 20:25:47 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:24:33 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	rrr(t_list	**stack_a, t_list	**stack_b);
 // sorting
 
 void	sort_three_number(t_list **stack);
+void	four_and_five(t_list **stack_a, t_list **stack_b);
 
 
 #endif
