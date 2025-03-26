@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:08:47 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/25 20:17:27 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/26 18:22:24 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,16 @@ void	strclear(char ***str)
 	}
 	free(*str);
 	*str = NULL;
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	if (!new)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	(ft_lstlast(*lst))->next = new;
 }

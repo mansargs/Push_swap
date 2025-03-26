@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:15:24 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/25 20:18:26 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/26 21:39:31 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_list	*ft_lstnew(void *content);
 void	ft_lstclear(t_list **lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
 
 int		copy_to_array(t_list *list);
 

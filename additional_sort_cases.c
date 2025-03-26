@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 19:41:10 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/26 02:07:44 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/26 22:25:48 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ void	four_and_five(t_list **stack_a, t_list **stack_b)
 	counter = ft_lstsize(*stack_a) - 3;
 	min = -1;
 	i = -1;
+	if ((*stack_a)->next->index == 0)
+		sa(stack_a);
 	while (++i < counter)
 	{
 		min_in_top(stack_a, ++min);
-
 		pb(stack_b, stack_a);
 	}
 	sort_three_number(stack_a);

@@ -5,19 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 17:48:11 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/26 17:58:49 by mansargs         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   butterfly.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 17:48:11 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/26 02:40:31 by mansargs         ###   ########.fr       */
+/*   Created: 2025/03/26 02:40:31 by mansargs          #+#    #+#             */
+/*   Updated: 2025/03/27 01:30:34 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +31,10 @@ void max_in_top(t_list **stack, int max)
 	}
 	if (i <= length / 2)
 		while (i--)
-			ra(stack);
+			rb(stack);
 	else
 		while (length-- > i)
-			rra(stack);
+			rrb(stack);
 }
 
 void	butterfly(t_list **stack_a, t_list **stack_b)

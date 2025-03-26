@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 20:34:00 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/25 20:24:12 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 01:32:16 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,18 @@ void	print_stack(t_list *start)
 {
 	if (!start)
 	{
-		printf("NULL");
+		printf("Stack is empty\n");
 		return ;
 	}
 	while (start)
 	{
-		printf("data --->%d\taddress ---->%p\tindex ---->%d\n", *(int *)start->data, start->next, start->index);
+		printf("data --->%d\taddress ---->%p\tindex ---->%d\n",
+		       *(int *)start->data, (void *)start, start->index);
 		start = start->next;
 	}
+	printf("\n");
 }
+
 
 void	print_result(int t)
 {
