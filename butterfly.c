@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:48:11 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/26 03:33:38 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/26 16:55:00 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ void	butterfly(t_list **stack_a, t_list **stack_b)
 
 	size = ft_lstsize(*stack_a);
 	len = size;
-	n = sqrt(len) + log2(len) - 1;
+	n = sqrt(len) + log2(len);
 	counter = 0;
-	while (size > 3)
+	while (size != 0)
 	{
+		print_stack(*stack_a);
 		if (!*stack_a)
 			return ;
 		last = *stack_a;
@@ -81,9 +82,10 @@ void	butterfly(t_list **stack_a, t_list **stack_b)
 		}
 		else
 			ra(stack_a);
+		print_stack(*stack_b);
 	}
-	sort_three_number(stack_a);
-	max = len - 4;
+	//sort_three_number(stack_a);
+	max = len - 1;
 	while (ft_lstsize(*stack_b) > 0)
 	{
 		max_in_top(stack_b, max);

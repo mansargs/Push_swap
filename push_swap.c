@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:09:52 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/26 03:01:46 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/26 16:24:39 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char *argv[])
 	 	return (ft_lstclear(&stack_a), 0);
 	 else
 	 	sort_stack(&stack_a, &stack_b);
-	// print_stack(stack_a);
+	print_stack(stack_a);
 	//printf("\n_____\n");
 	//print_stack(stack_b);
 	return (0);
