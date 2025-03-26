@@ -1,7 +1,7 @@
-TARGET = pushswap.a
+TARGET = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I.
 
 AR      = ar
 ARFLAGS = -rcs
@@ -9,23 +9,22 @@ RM = rm -rf
 
 SOURCE  = $(shell find . -name "*.c")
 OBJ     = $(SOURCE:.c=.o)
-INCLUDE = push_swap.h
 
-all : $(TARGET)
+all: $(TARGET)
 
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -lm -o $(TARGET)
 
-$(TARGET) : $(OBJ)
-	$(AR) $(ARFLAGS) $(TARGET) $(OBJ)
-
-%.o : %.c $(INCLUDE)
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean :
+clean:
 	$(RM) $(OBJ)
 
-fclean : clean
+fclean: clean
 	$(RM) $(TARGET)
 
-re : fclean all
+re: fclean all
 
-.PHONY : all re clean fclean
+.PHONY: all re clean fclean
+
