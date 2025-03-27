@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 02:33:18 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/27 02:33:40 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:04:18 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,13 @@ void	strclear(char ***str)
 	}
 	free(*str);
 	*str = NULL;
+}
+
+void	error_handle(t_list **stack, char ***split, int exit_code)
+{
+	
+	ft_lstclear(stack);
+	if (split)
+		strclear(split);
+	exit (exit_code);
 }

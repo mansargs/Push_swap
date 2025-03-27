@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 02:36:08 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/27 03:25:15 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:23:31 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ static int	no_digit(char *str)
 	i = -1;
 	while (str[++i])
 		if (str[i] >= '0' && str[i] <= '9')
-			return (0);
+			 (0);
 	return (1);
 }
 
-static int	check(char *str)
+static void	check(char *str, t_list **stack, char ***split)
 {
 	int		i;
 	int		num;
@@ -59,6 +59,8 @@ static int	check(char *str)
 	i = 0;
 	num = ft_atoi(str);
 	itoa = ft_itoa(num);
+	if (!itoa)
+		error_handle (stack, split, MEMORY_FAILURE);
 	if (str[i] == '+')
 		++i;
 	while (str[i] == '0')
@@ -66,11 +68,14 @@ static int	check(char *str)
 	if (str[i] == '\0')
 		--i;
 	if (!compare(itoa, str + i))
-		return (free(itoa), 0);
-	return (free(itoa), 1);
+	{
+		free(itoa);
+		error_handle (stack, split, VALIDATION_ERROR);
+	}
+	free(itoa);
 }
 
-static int	add(char *str, t_list **stack_a)
+static void	add(char *str, t_list **stack_a, char ***split)
 {
 	int		num;
 	int		*ptr;
@@ -79,16 +84,15 @@ static int	add(char *str, t_list **stack_a)
 	num = ft_atoi(str);
 	ptr = (int *)malloc(sizeof(int));
 	if (!ptr)
-		return (0);
+		error_handle (stack_a, split, MEMORY_FAILURE);
 	*ptr = num;
 	new_node = ft_lstnew(ptr);
 	if (!new_node)
-		return (0);
+		error_handle (stack_a, split, MEMORY_FAILURE);
 	ft_lstadd_back(stack_a, new_node);
-	return (1);
 }
 
-int	check_and_add(int argc, char *argv[], t_list **stack_a)
+void	check_and_add(int argc, char *argv[], t_list **stack_a)
 {
 	char	**split;
 	int		i;
@@ -98,19 +102,16 @@ int	check_and_add(int argc, char *argv[], t_list **stack_a)
 	while (++i < argc)
 	{
 		if (argv[i][0] == '\0' || no_digit(argv[i]))
-			return (ft_lstclear(stack_a), 0);
+			error_handle(stack_a, NULL, VALIDATION_ERROR);
 		split = ft_split(argv[i], ' ');
 		if (!split)
-			return (ft_lstclear(stack_a), 0);
+			error_handle(stack_a, NULL, MEMORY_FAILURE);
 		j = -1;
 		while (split[++j])
 		{
-			if (!check(split[j]))
-				return (ft_lstclear(stack_a), strclear(&split), 0);
-			if (!add(split[j], stack_a))
-				return (ft_lstclear(stack_a), strclear(&split), 0);
+			check(split[j], stack_a, &split);
+			add(split[j], stack_a, &split);
 		}
 		strclear(&split);
 	}
-	return (1);
 }

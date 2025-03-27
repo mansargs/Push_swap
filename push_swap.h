@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 03:34:20 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/27 03:56:13 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:03:41 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ typedef struct s_list
 	int				index;
 }					t_list;
 
+enum ExitCodes {
+	SUCCESS,
+	FAILURE,
+	VALIDATION_ERROR,
+	MEMORY_FAILURE
+};
+
 // Helper functions
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *str);
@@ -33,6 +40,7 @@ int		ft_atoi(const char *str);
 // Clear functions
 void	strclear(char ***str);
 void	ft_lstclear(t_list **lst);
+void	error_handle(t_list **stack, char ***split, int exit_code);
 
 // Validation function
 int		check_and_add(int argc, char *argv[], t_list **stack_a);
