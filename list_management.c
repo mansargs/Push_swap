@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 02:30:58 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/27 02:31:56 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:18:28 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_list	*ft_lstnew(void *content)
 	if (!list)
 		return (NULL);
 	list->data = content;
+	list->index = 0;
 	list->next = NULL;
 	return (list);
 }

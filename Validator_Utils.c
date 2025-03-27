@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 02:36:08 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/27 17:23:31 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:27:29 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	no_digit(char *str)
 	i = -1;
 	while (str[++i])
 		if (str[i] >= '0' && str[i] <= '9')
-			 (0);
+			return (0);
 	return (1);
 }
 
@@ -90,6 +90,7 @@ static void	add(char *str, t_list **stack_a, char ***split)
 	if (!new_node)
 		error_handle (stack_a, split, MEMORY_FAILURE);
 	ft_lstadd_back(stack_a, new_node);
+	indexation(stack_a, split, *ptr);
 }
 
 void	check_and_add(int argc, char *argv[], t_list **stack_a)

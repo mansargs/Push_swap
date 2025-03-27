@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 02:33:18 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/27 17:04:18 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:26:10 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	strclear(char ***str)
 
 void	error_handle(t_list **stack, char ***split, int exit_code)
 {
-	
+	write (2, "Error\n", 6);
 	ft_lstclear(stack);
 	if (split)
 		strclear(split);

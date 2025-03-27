@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 03:34:20 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/27 17:03:41 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:12:38 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_list
 {
@@ -23,9 +24,9 @@ typedef struct s_list
 	int				index;
 }					t_list;
 
-enum ExitCodes {
+enum e_exit_codes
+{
 	SUCCESS,
-	FAILURE,
 	VALIDATION_ERROR,
 	MEMORY_FAILURE
 };
@@ -37,13 +38,14 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
 
-// Clear functions
+// Cleaning and program interrupt functions
 void	strclear(char ***str);
 void	ft_lstclear(t_list **lst);
 void	error_handle(t_list **stack, char ***split, int exit_code);
 
-// Validation function
-int		check_and_add(int argc, char *argv[], t_list **stack_a);
+// Validation, stack builder and indexing functions
+void	check_and_add(int argc, char *argv[], t_list **stack_a);
+void	indexation(t_list **stack, char ***split, int num);
 
 // Functions for linked list managment
 int		ft_lstsize(t_list *lst);
@@ -59,8 +61,6 @@ void	rotate(t_list **stack, char *operation);
 void	reverse_rotate(t_list **stack, char *operation);
 
 // sorting
-int		copy_to_array(t_list *list);
-void	quicksort(int	*arr, int low, int high);
 int		is_sorted(t_list *stack_a);
 void	sort_stack(t_list **stack_a, t_list **stack_b);
 void	sort_three_number(t_list **stack);
