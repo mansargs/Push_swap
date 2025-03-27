@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/22 16:13:02 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/26 18:24:26 by mansargs         ###   ########.fr       */
+/*   Created: 2025/03/27 02:36:08 by mansargs          #+#    #+#             */
+/*   Updated: 2025/03/27 03:25:15 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	compare(char *itoa, char *str)
+static int	compare(char *itoa, char *str)
 {
 	int	i;
 	int	j;
@@ -39,7 +39,7 @@ int	compare(char *itoa, char *str)
 	return (str[i] == '\0' && itoa[j] == '\0');
 }
 
-int	no_digit(char *str)
+static int	no_digit(char *str)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ int	no_digit(char *str)
 	return (1);
 }
 
-int	check(char *str)
+static int	check(char *str)
 {
 	int		i;
 	int		num;
@@ -70,7 +70,7 @@ int	check(char *str)
 	return (free(itoa), 1);
 }
 
-int	add(char *str, t_list **stack_a)
+static int	add(char *str, t_list **stack_a)
 {
 	int		num;
 	int		*ptr;

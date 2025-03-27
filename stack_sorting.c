@@ -6,13 +6,13 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 20:34:00 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/27 01:32:16 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 04:04:14 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_sorted(t_list *stack)
+int	is_sorted(t_list *stack)
 {
 	while (stack && stack->next)
 	{
@@ -23,31 +23,6 @@ int is_sorted(t_list *stack)
 	return (1);
 }
 
-void	print_stack(t_list *start)
-{
-	if (!start)
-	{
-		printf("Stack is empty\n");
-		return ;
-	}
-	while (start)
-	{
-		printf("data --->%d\taddress ---->%p\tindex ---->%d\n",
-		       *(int *)start->data, (void *)start, start->index);
-		start = start->next;
-	}
-	printf("\n");
-}
-
-
-void	print_result(int t)
-{
-	if (t)
-		write (1, "OK\n", 3);
-	else
-		write (1, "KO\n", 3);
-}
-
 void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	int	n;
@@ -55,7 +30,7 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 	(void) stack_b;
 	n = ft_lstsize(*stack_a);
 	if (n == 2)
-		sa(stack_a);
+		swap_stack(stack_a, "sa\n");
 	else if (n == 3)
 		sort_three_number(stack_a);
 	else if (n == 4 || n == 5)
@@ -63,4 +38,3 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 	else
 		butterfly(stack_a, stack_b);
 }
-

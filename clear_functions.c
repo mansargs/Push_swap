@@ -1,36 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_stack.c                                       :+:      :+:    :+:   */
+/*   clear_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/24 18:09:32 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/26 01:28:36 by mansargs         ###   ########.fr       */
+/*   Created: 2025/03/27 02:33:18 by mansargs          #+#    #+#             */
+/*   Updated: 2025/03/27 02:33:40 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_pop(t_list **push, t_list **pop)
+void	ft_lstclear(t_list **lst)
 {
-	t_list *top;
+	t_list	*tmp;
 
-	if (!pop || !*pop)
+	if (*lst)
+	{
+		while (*lst)
+		{
+			if ((*lst)->data)
+			{
+				free ((*lst)->data);
+				(*lst)->data = NULL;
+			}
+			tmp = (*lst)->next;
+			free(*lst);
+			*lst = tmp;
+		}
+	}
+}
+
+void	strclear(char ***str)
+{
+	int	i;
+
+	if (!str || !*str)
 		return ;
-	top = *pop;
-	*pop = (*pop)->next;
-	ft_lstadd_front(push, top);
-}
-
-void	pa(t_list **push, t_list **pop)
-{
-	write (1, "pa\n", 3);
-	push_pop(push, pop);
-}
-
-void	pb(t_list **push, t_list **pop)
-{
-	write (1, "pb\n", 3);
-	push_pop(push, pop);
+	i = 0;
+	while ((*str)[i])
+	{
+		free((*str)[i]);
+		(*str)[i] = NULL;
+		i++;
+	}
+	free(*str);
+	*str = NULL;
 }

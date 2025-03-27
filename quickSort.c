@@ -6,13 +6,13 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:17:14 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/24 17:20:23 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 03:28:17 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(int *a, int *b)
+static void	swap(int *a, int *b)
 {
 	int	temp;
 
@@ -21,7 +21,7 @@ void	swap(int *a, int *b)
 	*b = temp;
 }
 
-int	partition(int	*arr, int low, int high)
+static int	partition(int	*arr, int low, int high)
 {
 	int	mid;
 	int	pivot;

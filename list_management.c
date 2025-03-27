@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/22 17:08:47 by lenovo            #+#    #+#             */
-/*   Updated: 2025/03/26 18:22:24 by mansargs         ###   ########.fr       */
+/*   Created: 2025/03/27 02:30:58 by mansargs          #+#    #+#             */
+/*   Updated: 2025/03/27 02:31:56 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,43 +53,6 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		new->next = *lst;
 		*lst = new;
 	}
-}
-
-void	ft_lstclear(t_list **lst)
-{
-	t_list	*tmp;
-
-	if (*lst)
-	{
-		while (*lst)
-		{
-			if ((*lst)->data)
-			{
-				free ((*lst)->data);
-				(*lst)->data = NULL;
-			}
-			tmp = (*lst)->next;
-			free(*lst);
-			*lst = tmp;
-		}
-	}
-}
-
-void	strclear(char ***str)
-{
-	int	i;
-
-	if (!str || !*str)
-		return ;
-	i = 0;
-	while ((*str)[i])
-	{
-		free((*str)[i]);
-		(*str)[i] = NULL;
-		i++;
-	}
-	free(*str);
-	*str = NULL;
 }
 
 void	ft_lstadd_back(t_list **lst, t_list *new)

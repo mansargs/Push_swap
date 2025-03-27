@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 19:41:10 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/26 22:25:48 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/27 04:00:30 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,25 @@ void	sort_three_number(t_list **stack)
 	t_list	*list;
 
 	list = *stack;
-	if (list->index > list->next->index && list->index > list->next->next->index)
+	if (list->index > list->next->index
+		&& list->index > list->next->next->index)
 	{
-		ra(stack);
+		rotate(stack, "ra\n");
 		if ((*stack)->index > (*stack)->next->index)
-			sa(stack);
+			swap_stack(stack, "sa\n");
 	}
-	else if (list->index < list->next->index && list->next->index > list->next->next->index)
+	else if (list->index < list->next->index
+		&& list->next->index > list->next->next->index)
 	{
-		rra(stack);
+		reverse_rotate(stack, "rra\n");
 		if ((*stack)->index > (*stack)->next->index)
-			sa(stack);
+			swap_stack(stack, "sa\n");
 	}
 	else if (list->index > list->next->index)
-		sa(stack);
+		swap_stack(stack, "sa\n");
 }
 
-
-void	min_in_top(t_list **stack, int min)
+static void	min_in_top(t_list **stack, int min)
 {
 	int		i;
 	int		lenght;
@@ -52,10 +53,10 @@ void	min_in_top(t_list **stack, int min)
 	}
 	if (i <= lenght / 2)
 		while (i--)
-			ra(stack);
+			rotate(stack, "ra\n");
 	else
 		while (i++ <= lenght)
-			rra(stack);
+			reverse_rotate(stack, "rra\n");
 }
 
 void	four_and_five(t_list **stack_a, t_list **stack_b)
@@ -68,13 +69,13 @@ void	four_and_five(t_list **stack_a, t_list **stack_b)
 	min = -1;
 	i = -1;
 	if ((*stack_a)->next->index == 0)
-		sa(stack_a);
+		swap_stack(stack_a, "sa\n");
 	while (++i < counter)
 	{
 		min_in_top(stack_a, ++min);
-		pb(stack_b, stack_a);
+		push_pop(stack_b, stack_a, "pb\n");
 	}
 	sort_three_number(stack_a);
-	while(i--)
-		pa(stack_a, stack_b);
+	while (i--)
+		push_pop(stack_a, stack_b, "pa\n");
 }
