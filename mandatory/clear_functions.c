@@ -6,7 +6,7 @@
 /*   By: mansargs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 02:33:18 by mansargs          #+#    #+#             */
-/*   Updated: 2025/03/27 19:26:10 by mansargs         ###   ########.fr       */
+/*   Updated: 2025/03/28 11:42:35 by mansargs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ void	ft_lstclear(t_list **lst)
 	{
 		while (*lst)
 		{
-			if ((*lst)->data)
-			{
-				free ((*lst)->data);
-				(*lst)->data = NULL;
-			}
 			tmp = (*lst)->next;
 			free(*lst);
 			*lst = tmp;

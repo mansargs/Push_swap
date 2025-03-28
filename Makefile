@@ -1,11 +1,11 @@
 TARGET = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf
 
-SOURCE  = $(shell find . -name "*.c")
+SOURCE  = $(shell find ./mandatory/ -name "*.c")
 OBJ     = $(SOURCE:.c=.o)
 
 all: $(TARGET)
